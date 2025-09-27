@@ -1,4 +1,6 @@
-<nav class="bg-gradient-to-r from-purple-950 via-fuchsia-900 to-indigo-950 shadow-xl border-b border-purple-500/30">
+
+
+<nav class="bg-gradient-to-r from-purple-950 via-fuchsia-900 to-indigo-950 shadow-xl border-b border-black">
     <div class="max-w-7xl mx-auto px-6">
         <div class="flex justify-center items-center h-16 space-x-12">
 

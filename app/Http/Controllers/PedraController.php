@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Storage;
 use App\Models\Pedras;
 
 class PedraController extends Controller
@@ -16,29 +16,23 @@ class PedraController extends Controller
         $this->pedras = new Pedras();
     }
 
-    public function index()
+    public function index(Pedras $pedras)
     {
-        $pedras = Pedras::latest()->get();
+        $pedras = Pedras::all();
         return view('pedras', compact('pedras'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create(Pedras $pedras)
     {
         return view('pedras_create', $pedras);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
             'nome' => 'required|string|max:255',
-            'imagem' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-            'descricao' => 'nullable|string',
+            'descricao' => 'required|string|max:1000',
+            'imagem' => 'required|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
         $path = null;
@@ -60,15 +54,8 @@ class PedraController extends Controller
      */
     public function show(string $id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
+        $pedra = Pedras::findOrFail($id);
+        return view('pedras_show', compact('pedra'));
     }
 
     /**
@@ -76,7 +63,30 @@ class PedraController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'nome' => 'required|string|max:255',
+            'descricao' => 'required|string|max:1000',
+            'imagem' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
+
+        $pedra = Pedras::findOrFail($id);
+
+        $pedra->nome = $request->nome;
+        $pedra->descricao = $request->descricao;
+
+        if ($request->hasFile('imagem')) {
+            // Remove a imagem antiga se existir
+            if ($pedra->imagem) {
+                Storage::disk('public')->delete($pedra->imagem);
+            }
+
+            $path = $request->file('imagem')->store('pedras', 'public');
+            $pedra->imagem = $path;
+        }
+
+        $pedra->save();
+
+        return redirect()->route('pedras.index', $pedra->id)->with('success', 'Pedra atualizada com sucesso!');
     }
 
     /**
@@ -84,6 +94,7 @@ class PedraController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $this->pedras->where('id', $id)->delete();
+        return redirect()->route('pedras.index');
     }
 }
