@@ -1,4 +1,4 @@
-# Nome do Seu Projeto
+# Pedras Naturais
 
 Uma breve descrição sobre o que seu projeto faz. Por exemplo: "Aplicação web construída com Laravel 10 e Vite para demonstrar um CRUD (Create, Read, Update, Delete) completo de [Nome do Recurso, ex: Pedras]."
 
