@@ -1,6 +1,6 @@
 # Pedras Naturais
 
-Uma breve descrição sobre o que seu projeto faz. Por exemplo: "Aplicação web construída com Laravel 10 e Vite para demonstrar um CRUD (Create, Read, Update, Delete) completo de [Nome do Recurso, ex: Pedras]."
+## Aplicação web construída com Laravel 10 e Vite para demonstrar um CRUD (Create, Read, Update, Delete) para uma página de pedras naturais e seus significados.
 
 ## ✨ Funcionalidades Principais
 
@@ -16,14 +16,14 @@ Este projeto foi construído utilizando um conjunto de tecnologias modernas para
 
 *   **Backend:**
     *   PHP 8.1+
-    *   Laravel 10 - Um framework PHP robusto e elegante.
+    *   Laravel 10+
     *   MySQL - Como banco de dados relacional.
 
 *   **Frontend:**
     *   Vite - Ferramenta de build para o frontend, oferecendo um desenvolvimento rápido.
     *   Blade - O motor de templates simples e poderoso do Laravel.
-    *   Tailwind CSS (Opcional, se você usou) - Um framework CSS utility-first.
-    *   JavaScript
+    *   Tailwind CSS.
+    *   AlphineJS.
 
 *   **Ambiente de Desenvolvimento:**
     *   Composer - Gerenciador de dependências para PHP.
@@ -43,12 +43,12 @@ Siga os passos abaixo para configurar o ambiente de desenvolvimento:
 
 1.  **Clone o repositório:**
     ```bash
-    git clone https://github.com/seu-usuario/seu-repositorio.git
+    git clone https://github.com/GustavoBeckerDev/pedras-laravel
     ```
 
 2.  **Navegue até o diretório do projeto:**
     ```bash
-    cd seu-repositorio
+    cd pedras-laravel
     ```
 
 3.  **Instale as dependências do PHP:**
@@ -101,4 +101,4 @@ Para rodar a aplicação, você precisará iniciar tanto o servidor de backend d
     ```
 
 3.  **Acesse a aplicação:**
-    *   Abra seu navegador e acesse: http://127.0.0.1:8000
+    *   Abra seu navegador e acesse: http://127.0.0.1:8000 ou http://localhost:8000
